@@ -15,24 +15,24 @@
 </head>
 <body>
 
-<h1>Trabajo 1 - Organizar Evento (Polimorfismo)</h1>
+<h1>Organizar Evento </h1>
 <p>9 objetos de tipo Boda, Concierto y Conferencia, invocados de forma polimórfica a través de la interfaz <code>OrganizadorEvento</code>.</p>
 
 <table>
     <thead>
     <tr>
         <th>Tipo</th>
-        <th>planificar()</th>
-        <th>ejecutar()</th>
-        <th>cerrar()</th>
+        <th>planificar</th>
+        <th>ejecutar</th>
+        <th>cerrar</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="resultado : ${resultados}">
-        <td class="tipo" th:text="${resultado.tipo()}">Tipo</td>
-        <td th:text="${resultado.planificar()}">planificar</td>
-        <td th:text="${resultado.ejecutar()}">ejecutar</td>
-        <td th:text="${resultado.cerrar()}">cerrar</td>
+        <td class="tipo" th:text="${resultado.tipo}">Tipo</td>
+        <td th:text="${resultado.planificar}">planificar</td>
+        <td th:text="${resultado.ejecutar}">ejecutar</td>
+        <td th:text="${resultado.cerrar}">cerrar</td>
     </tr>
     </tbody>
 </table>
