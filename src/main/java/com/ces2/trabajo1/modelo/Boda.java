@@ -1,35 +1,61 @@
 package com.ces2.trabajo1.modelo;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Boda implements OrganizadorEvento {
 
-    private Evento evento;
+    private String nombre;
+    private List<Evento> eventos;
 
-    public Boda(Evento evento) {
-        this.evento = evento;
+    // Constructor recibe nombre y lista de eventos
+    public Boda(String nombre, List<Evento> eventos) {
+        this.nombre = nombre;
+        this.eventos = eventos;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public List<Evento> getEventos() {
+        return eventos;
     }
 
     @Override
     public String planificar() {
-        return "Planificando la boda '" + evento.getNombre() + "': se reserva el salón en "
-                + evento.getLugar() + " para el " + evento.getFecha()
-                + " y se organiza el banquete para " + evento.getNumeroInvitados() + " invitados.";
+        if (eventos.isEmpty()) {
+            return "Planificando la boda '" + nombre + "': no hay eventos registrados.";
+        }
+        String listaEventos = eventos.stream()
+                .map(Evento::getNombre)
+                .collect(Collectors.joining(", "));
+        return "Planificando la boda '" + nombre + "': se preparan " + eventos.size() +
+                " eventos (" + listaEventos + ").";
     }
 
     @Override
     public String ejecutar() {
-        return "Ejecutando la boda '" + evento.getNombre() + "': ceremonia, recepción y "
-                + "banquete en " + evento.getLugar() + " con un presupuesto de $"
-                + evento.getPresupuestoFormateado() + ".";
+        if (eventos.isEmpty()) {
+            return "Ejecutando la boda '" + nombre + "': no hay eventos para ejecutar.";
+        }
+        String listaEventos = eventos.stream()
+                .map(e -> e.getNombre() + " en " + e.getLugar())
+                .collect(Collectors.joining("; "));
+        return "Ejecutando la boda '" + nombre + "': " + listaEventos + ".";
     }
 
     @Override
     public String cerrar() {
-        return "Cerrando la boda '" + evento.getNombre() + "': se agradece a los "
-                + evento.getNumeroInvitados() + " invitados y se entrega el salón en "
-                + evento.getLugar() + ".";
-    }
-
-    public Evento getEvento() {
-        return evento;
+        if (eventos.isEmpty()) {
+            return "Cerrando la boda '" + nombre + "': no hubo eventos que cerrar.";
+        }
+        String listaEventos = eventos.stream()
+                .map(Evento::getNombre)
+                .collect(Collectors.joining(", "));
+        return "Cerrando la boda '" + nombre + "': se finalizan " + eventos.size() +
+                " eventos (" + listaEventos + ").";
     }
 }

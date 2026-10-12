@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Petición 5</title>
+</head>
+<body>
+<h1>Eventos Largos</h1>
+<p th:if="${hayEventoLargo}" th:text="'Sí existen eventos con más de 6 horas de duración.'"></p>
+<p th:if="${!hayEventoLargo}" th:text="'No hay eventos con más de 6 horas de duración.'"></p>
+</body>
+</html>

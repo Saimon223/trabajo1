@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Petición 3</title>
+</head>
+<body>
+<h1>Lugares de Eventos</h1>
+<ul>
+    <li th:each="lugar : ${lugares}" th:text="${lugar}"></li>
+</ul>
+</body>
+</html>

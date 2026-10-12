@@ -7,13 +7,15 @@ public class Evento {
     private String lugar;
     private int numeroInvitados;
     private double presupuesto;
+    private Integer duracionHoras; // nuevo atributo
 
-    public Evento(String nombre, String fecha, String lugar, int numeroInvitados, double presupuesto) {
+    public Evento(String nombre, String fecha, String lugar, int numeroInvitados, double presupuesto, Integer duracionHoras) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.lugar = lugar;
         this.numeroInvitados = numeroInvitados;
         this.presupuesto = presupuesto;
+        this.duracionHoras = duracionHoras;
     }
 
     public String getNombre() {
@@ -54,6 +56,14 @@ public class Evento {
 
     public void setPresupuesto(double presupuesto) {
         this.presupuesto = presupuesto;
+    }
+
+    public Integer getDuracionHoras() {
+        return duracionHoras;
+    }
+
+    public void setDuracionHoras(Integer duracionHoras) {
+        this.duracionHoras = duracionHoras;
     }
 
     public String resumen() {
